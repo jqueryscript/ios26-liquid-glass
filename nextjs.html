@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next.js - The React Framework for Production</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com/3.4.1"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+<!-- ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+
+<style>
+    body {
+        background-image: url('./wallpaper.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        min-height: 200vh;
+    }
+
+    .text-gradient-apple {
+        background: -webkit-linear-gradient(45deg, #FF2D55, #FF5E3A, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #AF52DE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gradient-apple {
+        background: linear-gradient(45deg, #007AFF, #AF52DE);
+    }
+
+    .liquidGlass-wrapper {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        padding: 0.6rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+        height: 100%;
+    }
+
+    .liquidGlass-wrapper:hover {
+        padding: 0.8rem;
+        border-radius: 2.5rem;
+    }
+
+    .liquidGlass-effect {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        backdrop-filter: blur(3px);
+        filter: url(#glass-distortion);
+    }
+
+    .liquidGlass-tint {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .liquidGlass-shine {
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .liquidGlass-text {
+        position: relative;
+        z-index: 3;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+    }
+
+    .liquidGlass-wrapper:hover .liquidGlass-text {
+        transform: scale(0.95);
+    }
+
+    .menu-item {
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.8rem;
+        transition: all 0.1s ease-in;
+    }
+
+    .menu-item:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2px);
+    }
+
+    .highlight-gradient-blue {
+        background: linear-gradient(90deg, rgba(90, 200, 250, 0.8), rgba(90, 200, 250, 0));
+    }
+
+    .highlight-gradient-green {
+        background: linear-gradient(90deg, rgba(76, 217, 100, 0.8), rgba(76, 217, 100, 0));
+    }
+
+    .highlight-gradient-orange {
+        background: linear-gradient(90deg, rgba(255, 149, 0, 0.8), rgba(255, 149, 0, 0));
+    }
+</style>
+</head>
+<body class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8">
+<svg style="position:absolute; width: 0; height: 0;">
+<filter id="glass-distortion">
+<feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="3" result="noise" />
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+</filter>
+</svg>
+<div class="w-full max-w-screen-2xl mx-auto">
+    <header class="text-center mb-8">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase">
+            Meet <span class="text-gradient-apple">Next.js</span>
+        </h1>
+        <p class="text-xl md:text-2xl font-light mt-2">The React Framework for Production</p>
+    </header>
+
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Vercel -->
+        <div class="lg:col-span-2">
+            <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-6 flex flex-col justify-between">
+                    <div>
+                        <i class="fas fa-bolt fa-2x text-yellow-300"></i>
+                        <h2 class="text-3xl font-bold mt-4">From the creators of Vercel</h2>
+                        <p class="mt-2">Next.js is optimally hosted on Vercel, providing a seamless development and deployment experience with zero configuration.</p>
+                    </div>
+                    <div class="text-8xl font-black self-end opacity-20">Vercel</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Performance Score -->
+        <div>
+            <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-6 flex flex-col items-center justify-center text-center">
+                    <div class="text-9xl font-black text-gradient-apple">100</div>
+                    <h2 class="text-2xl font-bold mt-2">Core Web Vitals</h2>
+                    <p class="mt-1">Achieve perfect scores with automatic optimizations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Community Growth Chart -->
+        <div>
+            <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-4 flex flex-col">
+                    <h2 class="text-xl font-bold text-center z-10">Community Growth</h2>
+                    <div id="echarts-growth" class="w-full h-full flex-grow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Server Components -->
+        <div>
+             <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-6 flex flex-col justify-center">
+                    <i class="fas fa-server fa-2x text-blue-300"></i>
+                    <h2 class="text-3xl font-bold mt-4">Server Components</h2>
+                    <p class="mt-2">A new paradigm. Write UI that runs on the server, for faster, lighter client-side code.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: Dynamic Rendering -->
+        <div class="lg:col-span-2">
+            <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-6">
+                    <h2 class="text-3xl font-bold">Hybrid Rendering</h2>
+                    <p class="mt-2">Seamlessly blend static and dynamic rendering in one application. Get the best of both worlds: the speed of static, the flexibility of dynamic.</p>
+                    <div class="mt-4 flex flex-wrap gap-4 text-lg">
+                       <div class="font-bold highlight-gradient-blue p-2 rounded-lg">SSR</div>
+                       <div class="font-bold highlight-gradient-green p-2 rounded-lg">SSG</div>
+                       <div class="font-bold highlight-gradient-orange p-2 rounded-lg">ISR</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6: Developer Experience -->
+        <div>
+             <div class="liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text w-full p-6">
+                    <i class="fas fa-code fa-2x text-purple-300"></i>
+                    <h2 class="text-3xl font-bold mt-4">Developer Experience</h2>
+                    <ul class="mt-2 space-y-2 list-inside">
+                       <li><i class="fas fa-check-circle text-green-400 mr-2"></i>File-system Routing</li>
+                       <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Fast Refresh</li>
+                       <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Image Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var chartDom = document.getElementById('echarts-growth');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                borderColor: 'rgba(255, 255, 255, 0.5)',
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                data: ['2021', '2022', '2023', '2024', '2025'],
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.5)'
+                    }
+                },
+                axisLabel: {
+                    color: 'white'
+                }
+            }],
+            yAxis: [{
+                type: 'value',
+                name: 'Downloads (M)',
+                axisLabel: {
+                    color: 'white'
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.5)'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.2)'
+                    }
+                }
+            }],
+            series: [{
+                name: 'NPM Downloads',
+                type: 'bar',
+                barWidth: '60%',
+                itemStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        { offset: 0, color: 'rgba(0, 122, 255, 1)' },
+                        { offset: 1, color: 'rgba(175, 82, 222, 0.4)' }
+                    ]),
+                    // *** FIX: Added a value for borderRadius ***
+                    borderRadius: 2,
+                },
+                data: [1.5, 2.8, 4.1, 5.5, 7.0]
+            }]
+        };
+
+        option && myChart.setOption(option);
+
+        window.addEventListener('resize', myChart.resize);
+    });
+</script>
+</body>
+</html>
