@@ -5,7 +5,7 @@ Recreated an iOS 26 'Liquid Glass' style Bento Grid using AI.
 > [!NOTE]
 > Live Demo: [https://codesandbox.io/p/sandbox/nn5q2y](https://www.cssscript.com/demo/liquid-glass-showcase/)
 
-https://github.com/jqueryscript/ios26-liquid-glass/raw/refs/heads/main/iOS%2026%20Liquid%20Glass.mp4
+https://github.com/user-attachments/assets/abca74e6-ea04-4127-a4f9-1b7bf9ec0f38
 
 ## About the Liquid Effect
 
